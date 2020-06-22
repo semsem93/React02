@@ -9,18 +9,28 @@ function LandingPage() {
 
     const [movies, setmovies] = useState([])
     const [mainmovieImage, setmainmovieImage] = useState(null)
+    const [currentpage, setcurrentpage] = useState(0)
+
+    
+    const fetchMovies = (endpoint) => {
+       fetch(endpoint)
+        .then(response => response.json())
+        .then(response => {
+            setmovies([...movies,...response.results])
+            setmainmovieImage(response.results[0])
+            setcurrentpage(response.page)
+        })
+    }
 
     useEffect(() => {
         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-        
-        fetch(endpoint)
-        .then(response => response.json())
-        .then(response => {
-            console.log(response)
-            setmovies([...response.results])
-            setmainmovieImage(response.results[0])
-        })
+        fetchMovies(endpoint);
     }, [])
+
+    const loadMoreItems = () => {
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${currentpage+1}`;
+        fetchMovies(endpoint);
+    }
 
     // && 이거는 mainmovieImage가 null이 아닐 때 실행하라는 코드임
 
@@ -55,7 +65,7 @@ function LandingPage() {
 
             </div>
             <div style={{display: 'flex', justifyContent:'center'}}>
-                <button>Load More</button>
+                <button onClick={loadMoreItems}>Load More</button>
             </div>
         </div>
     )
