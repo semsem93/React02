@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { API_URL, API_KEY, IMAGE_URL } from '../../Config';
 import MainImage from '../LandingPage/Sections/Mainimage';
 import MovieInfo from './Sections/MovieInfo';
+import GridCard from '../commons/GridCards';
+import { Row } from 'antd';
 
 function MovieDetail(props) {
 
     let movieId = props.match.params.movieId;
     const [Movie, setMovie] = useState([])
+    const [Casts, setCasts] = useState([])
+    const [ActoerToggle, setActoerToggle] = useState(false)
 
     useEffect(() => {
     
@@ -19,8 +23,19 @@ function MovieDetail(props) {
                 console.log(response)
                 setMovie(response)
             })
+
+        fetch(endpointCrew)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response)
+            setCasts(response.cast)
+        })
+
     }, [])
 
+    const toggleActoerView = () => {
+        setActoerToggle(!ActoerToggle)
+    }
 
     return (
         <div>
@@ -43,9 +58,21 @@ function MovieDetail(props) {
                 {/* actors grid */}
 
                 <div style={{display:'flex', justifyContent: 'center', margin: '2rem'}}>
-                    <button> Toggle Actor View </button>
+                    <button onClick={toggleActoerView}> Toggle Actor View </button>
                 </div>
-
+                {ActoerToggle &&
+                    <Row gutter={[16, 16]}>
+                        {Casts && Casts.map((cast, index) => (
+                            <React.Fragment key={index}> 
+                                <GridCard
+                                    image={cast.profile_path ?
+                                        `${IMAGE_URL}w500${cast.profile_path}` : null }
+                                    characterName={cast.name}
+                                />
+                            </React.Fragment>
+                        ))}
+                    </Row>
+                }
             </div>
         </div>
     )
