@@ -1,16 +1,68 @@
-Hello, My Friends  
-Thank you for Having interest in this repository ! 
+# React Side Project 02
+Follow the [React Getting Started](https://ko.reactjs.org/tutorial/tutorial.html) Guide for detailed instructions on setting up your local machine for development.
 
-To use this application, 
+## How to run
+* Clone repository and install dependencies
+```
+git clone Project
+```
+* Run Application
+```
+npm install
+cd cline
+npm install
+cd ..
+npm run dev
+```
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
-
-If you have problem, feel free to ask me ^^ 
-
- You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
+## Features
+* server
+> 1. mongoDB 사용
+> 2. jsonwebtoken 라이브러리 사용 token 생성 및 쿠기 저장 기능 추가
+> 3. bcrypt 라이브러리 사용 password 암호화
+------------------
+* hello word!!\
+```http : // localhost : 5000 /``` 
+* 가입 관련\
+```http://localhost:5000/api/users/register``` 
+\
+json 형식\
+``
+{ 
+"name":"test", 
+"email":"test@gamil.com", 
+"password":"test" 
+}
+``
+* 로그인\
+```http://localhost:5000/api/users/login```
+\
+json 형식\
+``
+{
+    "email":"test@gmail.com",
+    "password":"test"
+}
+``
+* 로그아웃\
+```http://localhost:5000/api/users/logout```
+---------------------
+* Client
+> 1. randing Page : 시작 페이지 The Movie API를 이용하여 영화 인기순으로 정렬
+> 2. Login Page : 로그인할 수 있는 화면
+> 3. Register Page : 회원 가입할 수 있는 화면
+> 4. Favorite Page : (로그인시 사용 가능) 사용자가 Favorite 누른 목록만 정렬
+> 5. Movie Detail Page: Movie Info 제공
+> 5. redux 기능 사용
+> 6. Auth 기능 사용
+--------------
+* randing Page\
+```http://localhost:3000/```
+* login Page\
+```http://loginhost:3000/login/```
+* register Page\
+```http://loginhost:3000/register```
+* Favorite Page\
+```http://loginhost:3000/favorite```
+* Movie detail Page\
+```http://loginhost:3000/movie/(영화번호)```
