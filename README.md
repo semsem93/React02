@@ -48,13 +48,15 @@ json 형식\
 ```http://localhost:5000/api/users/logout```
 ---------------------
 * Client
-> 1. randing Page : 시작 페이지 The Movie API를 이용하여 영화 인기순으로 정렬
+> 1. randing Page : 시작 페이지, 영화 인기순으로 정렬
 > 2. Login Page : 로그인할 수 있는 화면
 > 3. Register Page : 회원 가입할 수 있는 화면
 > 4. Favorite Page : (로그인시 사용 가능) 사용자가 Favorite 누른 목록만 정렬
 > 5. Movie Detail Page: Movie Info 제공
 > 5. redux 기능 사용
 > 6. Auth 기능 사용
+> 7. The Movie API 사용
+> 8. Ant Design 사용해 UI 
 --------------
 * randing Page\
 ```http://localhost:3000/```
