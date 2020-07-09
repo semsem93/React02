@@ -1,4 +1,4 @@
-# React Side Project 02
+# React Side Project 02 (Movie Site)
 Follow the [React Getting Started](https://ko.reactjs.org/tutorial/tutorial.html) Guide for detailed instructions on setting up your local machine for development.
 
 ## How to run
